@@ -67,7 +67,8 @@
     <Compile Include="Assets\Scripts\BodyContainer.cs" />
     <Compile Include="Assets\Scripts\BodyPhysics.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Collision Detection\ThreadedSpatialSubdivision.cs" />
+    <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\Octree.cs" />
+    <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\SpatialSubdivision.cs" />
     <Compile Include="Assets\Scripts\Coordinates.cs" />
     <Compile Include="Assets\Scripts\CreateBody.cs" />
     <Compile Include="Assets\Scripts\OrbitalPhysicsController.cs" />
