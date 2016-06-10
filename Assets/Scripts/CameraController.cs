@@ -3,7 +3,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-// TODO fix strange behaviour at y~0
+/* Camera controller. Positions camera based on first object placed or object that absorbs the latter.
+ * Rotates around single point with right click, zoom in and out with wheel. */
 
 public class CameraController : MonoBehaviour
 {

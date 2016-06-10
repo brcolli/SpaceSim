@@ -4,6 +4,8 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine.UI;
 
+/* Class for all bodies in the system. */
+
 public class Body : MonoBehaviour
 {
 
@@ -15,6 +17,16 @@ public class Body : MonoBehaviour
 
     /* Properties */
 
+    // Constructor
+    public Body(double m, double r)
+    {
+        this.Mass = m;
+        this.Radius = r;
+        this.Forces = new Vector3();
+        this.Acceleration = new Vector3();
+    }
+
+    /*
     public Body(float mass, float radius, float major, float eccentricity, Vector3? velocity=null,
                 Vector3? position=null, float? theta=null, float? z=null)
     {
@@ -35,6 +47,13 @@ public class Body : MonoBehaviour
         {
             this.Velocity = new Vector3();
         }
+    }*/
+
+    // Copy Constructor
+    public Body Copy()
+    {
+        Body b = new Body(this.Mass, this.Radius);
+        return b;
     }
 
     /* Getters and Setters */

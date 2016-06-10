@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Class to switch between spherical and cartesion coordinate system. 
+ * Can generate coordinates based on given orbital attributes. */
+
 public class Coordinates
 {
     public static Vector3 SysCoords(float major, float eccentricity, float? z = null, float? theta = null)
@@ -23,20 +26,14 @@ public class Coordinates
         // TODO: Use error bounds
         // If not a multiple of pi/2 but ignoring multiples of pi
         if (theta%(Mathf.PI/2) == 0 && theta%Mathf.PI != 0)
-        {
             coords[0] = 0F;
-        }
         else
-        {
             coords[0] = (float)major*Mathf.Cos((float)theta);
-        }
 
         // TODO: Use error bounds
         // If a multiple of pi, set to 0
         if (theta%Mathf.PI == 0)
-        {
             coords[1] = 0F;
-        }
         else
         {
             float minor = Mathf.Sqrt(Mathf.Pow(major, 2F)*(1 + Mathf.Pow(eccentricity, 2F)));

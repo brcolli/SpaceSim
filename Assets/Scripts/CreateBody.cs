@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+/* Instantiates a body based on placement of mouse. */
+
 public class CreateBody : MonoBehaviour
 {
 

@@ -3,6 +3,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/* Self-written physics system. Used for adding forces, velocities,
+ * acceleration, and position translations. */
+
 public class BodyPhysics : MonoBehaviour
 {
 
@@ -17,7 +20,6 @@ public class BodyPhysics : MonoBehaviour
                 ApplyForces(ref body, ref otherBody);
             }
         }
-        return;
     }
 
     // Update forces on bodyOne applied by bodyTwo
@@ -62,64 +64,27 @@ public class BodyPhysics : MonoBehaviour
         }
         
         bodyOne.Forces = temp;
+        bodyOne.Acceleration = bodyOne.Forces/(float)bodyOne.Mass;
     }
 
-    // Update positions based on velocity
-    private static void UpdatePositions(List<Body> system, float time)
+    // Pseudo-updates velocity, position, based on acceleration and returns true if object moved, else false
+    public static bool TestMovement(GameObject obj)
     {
-        
-        if (time == 0F)
-        {
-            return;
-        }
-
-        for (int i = 0; i < system.Count; i++)
-        {
-            Vector3 temp = system[i].Coords;
-            for (int j = 0; j < 3; j++)
-            {
-                temp[j] += UpdateVelocity(system[i], time)[i] * time;
-            }
-
-            system[i].Coords = temp;
-        }
+        Vector3 tempPosition = obj.transform.position;
+        Body objBody = obj.GetComponent<Body>();
+        Body b = new Body(objBody.Mass, objBody.Radius);
+        b.Velocity += b.Acceleration*(float) (Time.deltaTime);
+        b.Coords += b.Velocity*(float) (Time.deltaTime);
+        return tempPosition != b.Coords;
     }
 
-    // Update velocity based on given time
-    private static Vector3 UpdateVelocity(Body body, float time)
+    // Updates velocity, position, based on acceleration and returns true if object moved, else false
+    public static bool UpdateBodyPhysics(GameObject obj)
     {
-        Vector3 temp = body.Velocity;
-
-        for (int i = 0; i < 3; i++)
-            temp[i] = UpdateAcceleration(body)[i]*time;
-
-        body.Velocity = temp;
-
-        return body.Velocity;
-    }
-
-    // Update acceleration based on current forces
-    private static Vector3 UpdateAcceleration(Body body)
-    {
-        Vector3 temp = body.Acceleration;
-
-        for (int i = 0; i < 3; i++)
-            temp[i] = (float)body.Mass*body.Forces[i];
-
-        body.Acceleration = temp;
-
-        return body.Acceleration;
-    }
-
-    // Move the bodies according to start and end time
-    private void Move(List<Body> system, float start, float end, int dt)
-    {
-
-        // Call position update and force update during every t+dt
-        for (float t = start; t < end; t += (float)dt)
-        {
-            UpdatePositions(system, t);
-            //UpdateForces(system);
-        }
+        Vector3 tempPosition = obj.transform.position;
+        Body b = obj.GetComponent<Body>();
+        b.Velocity += b.Acceleration * (float)(Time.deltaTime);
+        b.Coords += b.Velocity * (float)(Time.deltaTime);
+        return tempPosition != b.Coords;
     }
 }

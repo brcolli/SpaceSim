@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* Updates physics for a given object by adding influence of all objects to each other
+ * and applying the force. */
+
 public class OrbitalPhysicsController : MonoBehaviour {
 
     private GameObject _universe;
@@ -17,7 +20,7 @@ public class OrbitalPhysicsController : MonoBehaviour {
         c++; // To correct for goofiness
     }
 
-	void Update ()
+	void FixedUpdate ()
 	{
         // Look for a change in size
 	    if (c != _objectPool.Count && !_universe.GetComponent<PlayerStateController>().Placing)
@@ -28,9 +31,9 @@ public class OrbitalPhysicsController : MonoBehaviour {
             Debug.Log("Updating forces");
 	        GameObject body = gameObject;
             BodyPhysics.UpdateForces(ref _objectPool, ref body); // Update force for this object
-	        gameObject.GetComponent<Body>().Forces = body.GetComponent<Body>().Forces; // Update reference
             Debug.Log("Final forces: " + body.GetComponent<Body>().Forces);
-            gameObject.GetComponent<Rigidbody>().AddForce(gameObject.GetComponent<Body>().Forces);
+            //gameObject.GetComponent<Rigidbody>().AddForce(gameObject.GetComponent<Body>().Forces);
 	    }
+	    BodyPhysics.UpdateBodyPhysics(gameObject);
 	}
 }

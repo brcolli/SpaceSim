@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Controls state that the player is in; ie placing an object, in menu, etc. */
+
 public class PlayerStateController : MonoBehaviour
 {
 

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* Holds all objects in the system. */
+
 public class BodyContainer : MonoBehaviour
 {
 

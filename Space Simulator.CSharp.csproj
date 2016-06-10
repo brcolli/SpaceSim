@@ -65,11 +65,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Body.cs" />
     <Compile Include="Assets\Scripts\BodyContainer.cs" />
-    <Compile Include="Assets\Scripts\BodyPhysics.cs" />
+    <Compile Include="Assets\Scripts\BodyPhysics\BodyPhysics.cs" />
+    <Compile Include="Assets\Scripts\BodyPhysics\Coordinates.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\Octree.cs" />
     <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\SpatialSubdivision.cs" />
-    <Compile Include="Assets\Scripts\Coordinates.cs" />
+    <Compile Include="Assets\Scripts\Collision Detection\NarrowPhase\SphericalCollisionCheck.cs" />
     <Compile Include="Assets\Scripts\CreateBody.cs" />
     <Compile Include="Assets\Scripts\OrbitalPhysicsController.cs" />
     <Compile Include="Assets\Scripts\OrbitalPlaneController.cs" />

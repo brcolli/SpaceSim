@@ -2,16 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* Used to place the object. Potential area of cleanup? */
+
 public class PlacementController : MonoBehaviour {
 
-    [SerializeField] private float Major;
+    /*[SerializeField] private float Major;
     [SerializeField] private float Eccentricity;
-    [SerializeField] private float Theta;
+    [SerializeField] private float Theta;*/
 
     private GameObject _universe;
     private List<GameObject> _objectPool;
     private bool _stay = false;
-    private bool _changeY = true;
+    //private bool _changeY = true;
 
     void Start()
     {
@@ -46,12 +48,11 @@ public class PlacementController : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().detectCollisions = true;
 
             _objectPool.Add(gameObject);
-            _universe.GetComponent<BodyContainer>().ObjectPool = _objectPool; // Update
             // If first object placed, make center of camera
             //if (_objectPool.Count == 1)
             //{
             _universe.GetComponent<PlayerStateController>().Placing = false;
-            _changeY = false;
+            //_changeY = false;
             if (_objectPool.Count == 1)
                 _universe.GetComponent<PlayerStateController>().Center = gameObject;
             //}
