@@ -11,8 +11,8 @@ public class Body : MonoBehaviour
 
     private void Start()
     {
-        Mass = gameObject.GetComponent<Rigidbody>().mass;
-        Radius = gameObject.GetComponent<SphereCollider>().radius;
+        //Mass = gameObject.GetComponent<Rigidbody>().mass;
+        //Radius = gameObject.GetComponent<SphereCollider>().radius;
     }
 
     /* Properties */
@@ -25,6 +25,8 @@ public class Body : MonoBehaviour
         this.Forces = new Vector3();
         this.Acceleration = new Vector3();
     }
+
+    public Body() { }
 
     /*
     public Body(float mass, float radius, float major, float eccentricity, Vector3? velocity=null,
@@ -50,11 +52,11 @@ public class Body : MonoBehaviour
     }*/
 
     // Copy Constructor
-    public Body Copy()
+    /*public Body Copy()
     {
         Body b = new Body(this.Mass, this.Radius);
         return b;
-    }
+    }*/
 
     /* Getters and Setters */
 

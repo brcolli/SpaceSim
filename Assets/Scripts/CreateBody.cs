@@ -30,6 +30,9 @@ public class CreateBody : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             coordinates = hit.point;
         GameObject planet = (GameObject) Instantiate(_planet, coordinates, transform.rotation);
+        Body p = planet.GetComponent<Body>();
+        p.Mass = 3.003E-6;
+        //p.Mass = 5.97E24;
     }
 
     public void CreateStar()
@@ -43,5 +46,8 @@ public class CreateBody : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             coordinates = hit.point;
         GameObject star = (GameObject)Instantiate(_star, coordinates, transform.rotation);
+        Body s = star.GetComponent<Body>();
+        s.Mass = 1;
+        //s.Mass = 1.989E30;
     }
 }

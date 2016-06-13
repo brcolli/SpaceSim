@@ -14,11 +14,12 @@ public class Star : Body {
 
     public Star(double m, double r) : base(m, r)
     {
-        
+        this.Mass = 1;
     }
 
     private void Start()
     {
-        gameObject.GetComponent<Rigidbody>().mass = 1; // Mass of the Sun = 1.989e30 = 1 SMU
+        //gameObject.GetComponent<Rigidbody>().mass = 1; // Mass of the Sun = 1.989e30 = 1 SMU
+        this.Mass = 1;
     }
 }

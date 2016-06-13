@@ -12,6 +12,7 @@ public class PlacementController : MonoBehaviour {
 
     private GameObject _universe;
     private List<GameObject> _objectPool;
+    private Body _objBody;
     private bool _stay = false;
     //private bool _changeY = true;
 
@@ -19,7 +20,8 @@ public class PlacementController : MonoBehaviour {
     {
         _universe = GameObject.FindGameObjectWithTag("Universe");
         _objectPool = _universe.GetComponent<BodyContainer>().ObjectPool;
-        gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+        _objBody = gameObject.GetComponent<Body>();
+        //gameObject.GetComponent<Rigidbody>().detectCollisions = false;
     }
 
     void Update()
@@ -45,7 +47,9 @@ public class PlacementController : MonoBehaviour {
         {
             // Turn off placing state
             _stay = true;
-            gameObject.GetComponent<Rigidbody>().detectCollisions = true;
+            //gameObject.GetComponent<Rigidbody>().detectCollisions = true;
+
+            _objBody.Coords = gameObject.transform.position;
 
             _objectPool.Add(gameObject);
             // If first object placed, make center of camera

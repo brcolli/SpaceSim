@@ -8,32 +8,36 @@ using System.Collections.Generic;
 public class OrbitalPhysicsController : MonoBehaviour {
 
     private GameObject _universe;
+    private GameObject _center;
 
     private List<GameObject> _objectPool;
-    private int c;
+    private bool _placing;
 
     void Start ()
     {
         _universe = GameObject.FindGameObjectWithTag("Universe");
+        _center = _universe.GetComponent<PlayerStateController>().Center;
         _objectPool = _universe.GetComponent<BodyContainer>().ObjectPool;
-        c = _objectPool.Count - 1;
-        c++; // To correct for goofiness
     }
 
 	void FixedUpdate ()
 	{
-        // Look for a change in size
-	    if (c != _objectPool.Count && !_universe.GetComponent<PlayerStateController>().Placing)
+        _placing = _universe.GetComponent<PlayerStateController>().Placing;
+        
+        // TODO use Body not GameObject
+        // Look for a change in size // TODO: Be aware that this pauses all object force updates while placing
+        if (!_placing && _objectPool.Count != 1)
 	    {
-	        c = _objectPool.Count - 1;
-	        c++;
-
-            Debug.Log("Updating forces");
-	        GameObject body = gameObject;
-            BodyPhysics.UpdateForces(ref _objectPool, ref body); // Update force for this object
-            Debug.Log("Final forces: " + body.GetComponent<Body>().Forces);
+            BodyPhysics.UpdateForces(_objectPool, gameObject); // Update force for this object
+            BodyPhysics.UpdateBodyPhysics(gameObject);
             //gameObject.GetComponent<Rigidbody>().AddForce(gameObject.GetComponent<Body>().Forces);
+        }
+
+        // If go too far out, delete
+	    if (gameObject.transform.position.sqrMagnitude - _center.transform.position.sqrMagnitude > 1E6)
+	    {
+	        _objectPool.Remove(gameObject);
+	        GameObject.Destroy(gameObject);
 	    }
-	    BodyPhysics.UpdateBodyPhysics(gameObject);
 	}
 }
