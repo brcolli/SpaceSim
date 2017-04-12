@@ -1,11 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/* Class to switch between spherical and cartesion coordinate system. 
- * Can generate coordinates based on given orbital attributes. */
+/// <summary>
+/// Class to switch between spherical and cartesion coordinate system.
+/// Can generate coordinates based on given orbital attributes.
+/// </summary>
 
 public class Coordinates
 {
+
+    /// <summary>
+    /// Returns an (x, y, z) coordinate given spherical coordinate values
+    /// </summary>
+    /// <param name="major">
+    /// Major axis length
+    /// </param>
+    /// <param name="eccentricity">
+    /// The eccentricity of the ellipse
+    /// </param>
+    /// <param name="z">
+    /// Height from plane
+    /// </param>
+    /// <param name="theta">
+    /// Angle from base meridian
+    /// </param>
+    /// <returns>
+    /// (x, y, z) coordinates
+    /// </returns>
     public static Vector3 SysCoords(float major, float eccentricity, float? z = null, float? theta = null)
     {
         // Coords to return

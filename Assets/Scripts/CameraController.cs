@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
-/* Camera controller. Positions camera based on first object placed or object that absorbs the latter.
- * Rotates around single point with right click, zoom in and out with wheel. */
+/// <summary>
+/// Camera controller. Positions camera based on first object placed or object that absorbs the latter.
+/// Rotates around single point with right click, zoom in and out with wheel.
+/// </summary>
 
 public class CameraController : MonoBehaviour
 {
@@ -88,7 +89,6 @@ public class CameraController : MonoBehaviour
 
         Distance = Mathf.Clamp(Distance - Input.GetAxis("Mouse ScrollWheel") * 5, DistanceMin, DistanceMax);
         RaycastHit hit;
-        //LayerMask layerMask = LayerMask.NameToLayer("Orbital Objects"); // To ignore all but orbital plane
         if (Physics.Linecast(_center.transform.position, transform.position, out hit))
         {
             Distance -= hit.distance;
@@ -102,6 +102,21 @@ public class CameraController : MonoBehaviour
         _velocityY = Mathf.Lerp(_velocityY, 0, Time.deltaTime * SmoothTime);
     }
 
+    /// <summary>
+    /// Constrains a given angle based on bounds
+    /// </summary>
+    /// <param name="angle">
+    /// The angle to clamp
+    /// </param>
+    /// <param name="min">
+    /// Minimum bound
+    /// </param>
+    /// <param name="max">
+    /// Maximum bound
+    /// </param>
+    /// <returns>
+    /// Clamped angle
+    /// </returns>
     public static float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360F)

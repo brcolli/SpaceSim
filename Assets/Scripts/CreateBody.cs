@@ -1,51 +1,64 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-/* Instantiates a body based on placement of mouse. */
+/// <summary>
+/// Instantiates a body based on placement of mouse.
+/// </summary>
 
 public class CreateBody : MonoBehaviour
 {
 
     [SerializeField] private GameObject _planet;
     [SerializeField] private GameObject _star;
-    //private List<GameObject> _objectPool;
 
     private void Start()
     {
-
     }
 
     // TODO Make function to disable button
 
+    /// <summary>
+    /// Places a planet object using a raycast to determine plane of placement
+    /// </summary>
     public void CreatePlanet()
     {
         // Place planet based on raycast
         GetComponent<PlayerStateController>().Placing = true;
+
+        // Launch ray
         RaycastHit hit;
-        //LayerMask layerMask = LayerMask.NameToLayer("Orbital Objects"); // To ignore all but orbital plane
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 coordinates = Vector3.zero;
+
+        // On hit, mark and place
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             coordinates = hit.point;
         GameObject planet = (GameObject) Instantiate(_planet, coordinates, transform.rotation);
+
         Body p = planet.GetComponent<Body>();
-        p.Mass = 3.003E-6;
-        //p.Mass = 5.97E24;
+        //p.Mass = 3.003E-6;
+        //p.Mass = 1.0E6;
+        p.Mass = 5.97E24;
     }
 
+    /// <summary>
+    /// Places a star object using a raycast to determine plane of placement
+    /// </summary>
     public void CreateStar()
     {
         // Place star based on raycast
         GetComponent<PlayerStateController>().Placing = true;
+
+        // Launch ray
         RaycastHit hit;
-        //LayerMask layerMask = LayerMask.NameToLayer("Orbital Objects"); // To ignore all but orbital plane
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 coordinates = Vector3.zero;
+
+        // On hit, mark and place
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             coordinates = hit.point;
         GameObject star = (GameObject)Instantiate(_star, coordinates, transform.rotation);
+
         Body s = star.GetComponent<Body>();
         s.Mass = 1;
         //s.Mass = 1.989E30;

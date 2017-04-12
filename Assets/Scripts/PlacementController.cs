@@ -2,26 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/* Used to place the object. Potential area of cleanup? */
+/// <summary>
+/// Used to place the object.
+/// </summary>
 
 public class PlacementController : MonoBehaviour {
 
-    /*[SerializeField] private float Major;
-    [SerializeField] private float Eccentricity;
-    [SerializeField] private float Theta;*/
-
     private GameObject _universe;
     private List<GameObject> _objectPool;
-    private Body _objBody;
     private bool _stay = false;
-    //private bool _changeY = true;
 
     void Start()
     {
         _universe = GameObject.FindGameObjectWithTag("Universe");
         _objectPool = _universe.GetComponent<BodyContainer>().ObjectPool;
-        _objBody = gameObject.GetComponent<Body>();
-        //gameObject.GetComponent<Rigidbody>().detectCollisions = false;
     }
 
     void Update()
@@ -31,7 +25,6 @@ public class PlacementController : MonoBehaviour {
         {
             // Find orbital plane
             RaycastHit hit;
-            //LayerMask layerMask = LayerMask.NameToLayer("Orbital Objects"); // To ignore all but orbital plane
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 transform.position = hit.point;
@@ -47,36 +40,19 @@ public class PlacementController : MonoBehaviour {
         {
             // Turn off placing state
             _stay = true;
-            //gameObject.GetComponent<Rigidbody>().detectCollisions = true;
-
-            _objBody.Coords = gameObject.transform.position;
 
             _objectPool.Add(gameObject);
-            // If first object placed, make center of camera
-            //if (_objectPool.Count == 1)
-            //{
             _universe.GetComponent<PlayerStateController>().Placing = false;
-            //_changeY = false;
+            // TODO event listener, assign center
             if (_objectPool.Count == 1)
+            {
                 _universe.GetComponent<PlayerStateController>().Center = gameObject;
-            //}
-        }/*
-        if (Input.GetMouseButton(0) && _objectPool.Count > 1 && _changeY && _stay) // Remove Count > 1?
-        {
-            Vector3 temp = Input.mousePosition;
-            temp.z = Camera.main.transform.position.magnitude; // TODO: Change based on camera position. Use Ray?
-            temp = Camera.main.ScreenToWorldPoint(temp);
-            transform.position = new Vector3(transform.position.x, temp.y, transform.position.z);
+            }
         }
-        else if (_changeY && _stay) // Left click released
-        {
-            _universe.GetComponent<PlayerStateController>().Placing = false;
-            _changeY = false;
-        }*/
         if (_stay)
         {
             // TODO update coords
-            gameObject.GetComponent<Body>().Coords = transform.position;
+            //gameObject.GetComponent<Body>().Coords = transform.position;
         }
     }
 

@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
-/* Checks for collisions between all objects within a list
- * and reacts accordingly. */
+/// <summary>
+/// Checks for collisions between all objects within a list
+/// and reacts accordingly.
+/// </summary>
 
 public class SphericalCollisionCheck : MonoBehaviour {
 
-    // Sends all possible collisions to collision reaction
+    /// <summary>
+    /// Sends all possible collisions to collision reaction
+    /// </summary>
+    /// <param name="potentialCollisions">
+    /// A list of possible game objects that may collide
+    /// </param>
     public static void CheckForSphericalCollisions(List<GameObject> potentialCollisions)
     {
         for (int i = 0; i < potentialCollisions.Count; i++)
@@ -60,6 +66,8 @@ public class SphericalCollisionCheck : MonoBehaviour {
                     objBody.Velocity = aFinal;
                     otherObjBody.Velocity = bFinal;
                     // TODO: collide
+
+                    Debug.Log("Collision");
                 }
             }
         }

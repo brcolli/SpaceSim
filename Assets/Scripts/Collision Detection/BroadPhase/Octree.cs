@@ -1,18 +1,19 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net.NetworkInformation;
 
-/* A class using an octree for spatial subdivision of my universe. Used in collision detection
- * as the broad phase to determine possible collisions, and send possible collisions to the narrow
- * phase to be accurately determined. Implements lazy creation, generating a branch only when needed
- * and deleting a branch only when needed (after a certain lifetime of being empty). Possible collisions
- * are determined by traversing up the tree from a given cell and returning all objects in all its parents. */
+/// <summary>
+/// A class using an octree for spatial subdivision of my universe. Used in collision detection
+/// as the broad phase to determine possible collisions, and send possible collisions to the narrow
+/// phase to be accurately determined.Implements lazy creation, generating a branch only when needed
+/// and deleting a branch only when needed (after a certain lifetime of being empty). Possible collisions
+/// are determined by traversing up the tree from a given cell and returning all objects in all its parents.
+/// </summary>
 
 public class Octree : MonoBehaviour
 {
+
+    /* Attributes */
 
     private List<GameObject> _containedObjects; // The list of contained objects at a node
     private static Queue<GameObject> _pendingObjects = new Queue<GameObject>(); // Objects to be inserted later
@@ -33,6 +34,15 @@ public class Octree : MonoBehaviour
 
     /* Constructors */
 
+    /// <summary>
+    /// Creates an Octree object
+    /// </summary>
+    /// <param name="region">
+    /// A bounds object defining the container
+    /// </param>
+    /// <param name="containedObjects">
+    /// The list of Game Objects within the region
+    /// </param>
     private Octree(Bounds region, List<GameObject> containedObjects)
     {
         _region = region;
@@ -40,6 +50,9 @@ public class Octree : MonoBehaviour
         _currLife = -1;
     }
 
+    /// <summary>
+    /// Creates an Octree object
+    /// </summary>
     public Octree()
     {
         _containedObjects = new List<GameObject>();
@@ -47,6 +60,12 @@ public class Octree : MonoBehaviour
         _currLife = -1;
     }
 
+    /// <summary>
+    /// Creates an Octree object
+    /// </summary>
+    /// <param name="region">
+    /// A bounds object defining the container
+    /// </param>
     public Octree(Bounds region)
     {
         _containedObjects = new List<GameObject>();
@@ -56,7 +75,9 @@ public class Octree : MonoBehaviour
 
     /* Methods */
 
-    // Lazy tree update (update only if queue is full)
+    /// <summary>
+    /// Lazy tree update (update only if queue is full)
+    /// </summary>
     private void UpdateTree()
     {
         if (!_built) // If not built, build tree based on queue...
@@ -73,7 +94,9 @@ public class Octree : MonoBehaviour
         //_ready = true;
     }
 
-    // Build tree based on pending objects
+    /// <summary>
+    /// Build tree based on pending objects
+    /// </summary>
     private void BuildTree()
     {
         if (_pendingObjects.Count <= 1)
@@ -152,7 +175,12 @@ public class Octree : MonoBehaviour
         //_ready = true;
     }
 
-    // Update tree based on game time, call this
+    /// <summary>
+    /// Update tree based on game time, call this
+    /// </summary>
+    /// <param name="time">
+    /// Current time
+    /// </param>
     public void UpdateTree(Time time)
     {
         if (_built)
@@ -243,7 +271,18 @@ public class Octree : MonoBehaviour
         }
     }
 
-    // Create child node with region and list of game objects
+    /// <summary>
+    /// Create child node with region and list of game objects
+    /// </summary>
+    /// <param name="region">
+    /// A bounds object defining the container
+    /// </param>
+    /// <param name="objectList">
+    /// The list of Game Objects within the region
+    /// </param>
+    /// <returns>
+    /// An Octree with the new nodes
+    /// </returns>
     private Octree CreateNode(Bounds region, List<GameObject> objectList)
     {
         if (objectList.Count == 0)
@@ -254,7 +293,18 @@ public class Octree : MonoBehaviour
         return ot;
     }
 
-    // Create child node with region and single game object, after inserting into list; less memory use
+    /// <summary>
+    /// Create child node with region and single game object, after inserting into list; less memory use
+    /// </summary>
+    /// <param name="region">
+    /// A bounds object defining the container
+    /// </param>
+    /// <param name="obj">
+    /// The list of Game Objects within the region
+    /// </param>
+    /// <returns>
+    /// An Octree with the new node
+    /// </returns>
     private Octree CreateNode(Bounds region, GameObject obj)
     {
         List<GameObject> objectList = new List<GameObject>(1) {obj};
@@ -263,7 +313,12 @@ public class Octree : MonoBehaviour
         return ot;
     }
 
-    // Insert object into tree at shallowest level possible
+    /// <summary>
+    /// Insert object into tree at shallowest level possible
+    /// </summary>
+    /// <param name="body">
+    /// The Game Object to insert
+    /// </param>
     private void Insert(GameObject body)
     {
         // If empty leaf node, insert and leave
@@ -330,7 +385,13 @@ public class Octree : MonoBehaviour
             BuildTree();
     }
 
-    // Recurse up to root node and add all potential collisions
+    /// <summary>
+    /// Recurse up to root node and add all potential collisions
+    /// </summary>
+    /// <param name="currNode">The node to begin checking for collisions</param>
+    /// <returns>
+    /// A list of Game Objects
+    /// </returns>
     private List<GameObject> CheckForPotentialCollisions(Octree currNode)
     {
         // Reached root
@@ -348,7 +409,9 @@ public class Octree : MonoBehaviour
         return potentialCollisions;
     }
 
-    // Find dimensions of smallest possible bounding box necessary to enclose all objects in list
+    /// <summary>
+    /// Find dimensions of smallest possible bounding box necessary to enclose all objects in list
+    /// </summary>
     private void FindSmallestBox()
     {
         Vector3 globalMin = Vector3.zero, globalMax = Vector3.zero;
@@ -387,7 +450,9 @@ public class Octree : MonoBehaviour
         _region.max = globalMax;
     }
 
-    // Finds smallest cube with power of 2 size
+    /// <summary>
+    /// Finds smallest cube with power of 2 size
+    /// </summary>
     private void FindSmallestBounds()
     {
         FindSmallestBox();
@@ -421,7 +486,15 @@ public class Octree : MonoBehaviour
         _region.max -= offset;
     }
 
-    // Return Most Significant Bit (MSB)
+    /// <summary>
+    /// Return Most Significant Bit (MSB)
+    /// </summary>
+    /// <param name="num">
+    /// The number in question
+    /// </param>
+    /// <returns>
+    /// Most Significant Bit of num
+    /// </returns>
     private int GetMSB(int num)
     {
         int bitPos = 0, msb = num;

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/* Child class for all stars. Main difference between planets is composition. */
+/// <summary>
+/// Child class for all stars. Main difference between planets is composition.
+/// </summary>
 
 public class Star : Body {
 
