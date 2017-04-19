@@ -38,7 +38,8 @@ public class OrbitalPhysicsController : MonoBehaviour {
 	        }
 
 	        // If go too far out, delete
-	        if (gameObject.transform.position.sqrMagnitude - _center.transform.position.sqrMagnitude > 1E6)
+            // TODO be aware that this breaks many scenes with far apart objects
+	        if (Mathf.Abs(gameObject.transform.position.sqrMagnitude - _center.transform.position.sqrMagnitude) > 1E9)
 	        {
 	            _objectPool.Remove(gameObject);
 	            GameObject.Destroy(gameObject);

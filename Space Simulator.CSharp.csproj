@@ -84,6 +84,8 @@
     <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\SpatialSubdivision.cs" />
     <Compile Include="Assets\Scripts\Collision Detection\NarrowPhase\SphericalCollisionCheck.cs" />
     <Compile Include="Assets\Scripts\CreateBody.cs" />
+    <Compile Include="Assets\Scripts\DisplayInfo.cs" />
+    <Compile Include="Assets\Scripts\LoadSaveScene.cs" />
     <Compile Include="Assets\Scripts\OrbitalPhysicsController.cs" />
     <Compile Include="Assets\Scripts\OrbitalPlaneController.cs" />
     <Compile Include="Assets\Scripts\PlacementController.cs" />

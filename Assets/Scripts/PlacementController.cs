@@ -24,9 +24,10 @@ public class PlacementController : MonoBehaviour {
         if (!Input.GetMouseButtonDown(0) && !_stay)
         {
             // Find orbital plane
+            int layerMask = 1 << 8;
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
                 transform.position = hit.point;
 
             // Right click to cancel placement
