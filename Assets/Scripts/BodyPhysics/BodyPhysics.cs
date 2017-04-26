@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 public class BodyPhysics : MonoBehaviour
 {
-
+    
     /// <summary>
     /// Apply forces to all bodies in a list
     /// </summary>
@@ -21,14 +21,14 @@ public class BodyPhysics : MonoBehaviour
     /// <param name="body">
     /// The Body object to update forces on
     /// </param>
-    public static void UpdateForces(List<GameObject> system, GameObject body)
+    public static void UpdateForces(List<GameObject> system, GameObject body, double G)
     {
         for (int i = 0; i < system.Count; i++)
         {
             if (system[i] != body)
             {
                 GameObject otherBody = system[i];
-                ApplyForces(body, otherBody);
+                ApplyForces(body, otherBody, G);
             }
         }
     }
@@ -42,25 +42,10 @@ public class BodyPhysics : MonoBehaviour
     /// <param name="objectB">
     /// The object applying the force
     /// </param>
-    private static void ApplyForces(GameObject objectA, GameObject objectB)
+    private static void ApplyForces(GameObject objectA, GameObject objectB, double G)
     {
         Body bodyOne = objectA.GetComponent<Body>();
         Body bodyTwo = objectB.GetComponent<Body>();
-
-        // Gravitational constant in m^3 / kg * s^2
-        //const double G = 6.67408E-11;
-        // Gravitational constant in km^3 / kg * s^2
-        const double G = 6.67408E-20;
-        // Gravitational constant in km^3 / kg * yr^2
-        //const double G = 2.105E-5;
-        // Gravitational constant in km^3 / SMU * yr^2
-        //const double G = 4.186845E25;
-        // Gravitational constant in km^3 / SMU * s^2
-        //const double G = 1.32764855E10;
-        // Gravitational constant in AU^3 / SMU * yr^2
-        //const double G = 39.4784176044;
-        // Gravitational constant in pc / SMU * (km/s)^2; Use with orbital mechanics
-        //const double G = 4.302E-3;
 
         // Vector of distances
         Vector3 distances = new Vector3(objectB.transform.position[0] - objectA.transform.position[0],
