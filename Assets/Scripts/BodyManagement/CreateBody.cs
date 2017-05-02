@@ -85,6 +85,7 @@ public class CreateBody : MonoBehaviour
         // On hit, mark and place
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             coordinates = hit.point;
+        
         GameObject newObj = Instantiate(obj, coordinates, transform.rotation);
         newObj.name = obj.name;
     }

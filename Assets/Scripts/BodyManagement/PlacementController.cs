@@ -12,10 +12,13 @@ public class PlacementController : MonoBehaviour {
     private List<GameObject> _objectPool;
     private bool _stay = false;
 
+    //private Body currBody_;
+
     void Start()
     {
         _universe = GameObject.FindGameObjectWithTag("Universe");
         _objectPool = _universe.GetComponent<BodyContainer>().ObjectPool;
+        //currBody_ = gameObject.GetComponent<Body>();
     }
 
     void Update()
@@ -23,6 +26,13 @@ public class PlacementController : MonoBehaviour {
         // Get state; manage placement
         if (!Input.GetMouseButtonDown(0) && !_stay)
         {
+
+
+            // TODO fix transform scaling
+            //float au_ratio = 1.496E11f; // 1 AU -> m
+
+            //gameObject.transform.localScale = new Vector3((float)currBody_.Radius / au_ratio, (float)currBody_.Radius / au_ratio, (float)currBody_.Radius / au_ratio);
+
             // Find orbital plane
             int layerMask = 1 << 8;
             RaycastHit hit;

@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Collision Detection\NarrowPhase\SphericalCollisionCheck.cs" />
     <Compile Include="Assets\Scripts\Misc\LoadSaveScene.cs" />
     <Compile Include="Assets\Scripts\UI\DisplayInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\OnCollisionParticles.cs" />
     <Compile Include="Assets\Scripts\UI\OnHoverHighlight.cs" />
     <Compile Include="Assets\Scripts\UniversalControllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\UniversalControllers\HierarchyManager.cs" />
