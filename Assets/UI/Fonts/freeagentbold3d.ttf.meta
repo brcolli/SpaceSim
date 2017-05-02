@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a3a32d6e92fd00b428a30b8852c06832
+timeCreated: 1493664177
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Bold 3D
+  fontNames:
+  - Free Agent Bold 3D
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

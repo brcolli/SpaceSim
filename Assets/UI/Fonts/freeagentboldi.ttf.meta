@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 98b8d2c1e5172aa43bd7d8438f88bbad
+timeCreated: 1493664176
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Bold Italic
+  fontNames:
+  - Free Agent Bold Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

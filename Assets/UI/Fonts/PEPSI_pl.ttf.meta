@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4dfa397d735da0547a034df28c9a3355
+timeCreated: 1493664019
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: '! PEPSI !'
+  fontNames:
+  - '! PEPSI !'
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 02ad68ceea7f2cb46a2e1a523cbde4c9
+timeCreated: 1493664175
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Condensed
+  fontNames:
+  - Free Agent Condensed
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

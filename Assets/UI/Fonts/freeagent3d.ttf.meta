@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 93b64e3cf252ddf40b88619ad559a7f7
+timeCreated: 1493664176
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent 3D
+  fontNames:
+  - Free Agent 3D
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b92d38f184357594187d160f2c64e5e4
+timeCreated: 1493664177
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Bold ExpItal
+  fontNames:
+  - Free Agent Bold ExpItal
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,6 +13,7 @@ public class DisplayInfo : MonoBehaviour
 
     [SerializeField] private GameObject infoPanel_;
     [SerializeField] private GameObject settingsWindow_;
+    [SerializeField] private GameObject helpWindow_;
     [SerializeField] private Text infoText_;
     [SerializeField] private GameObject universe_;
 
@@ -30,7 +31,10 @@ public class DisplayInfo : MonoBehaviour
         // Settings window on pressing 's'
         if (Input.GetKeyDown(KeyCode.S))
         {
-            settingsWindow_.SetActive(!settingsWindow_.activeSelf);
+            if (!helpWindow_.activeSelf)
+                settingsWindow_.SetActive(!settingsWindow_.activeSelf);
+            else
+                helpWindow_.SetActive(!helpWindow_.activeSelf);
         }
 
         // Information panel

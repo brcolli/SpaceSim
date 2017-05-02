@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 8614769f2d156524299c2fd5a6156ad5
+timeCreated: 1493664176
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Italic
+  fontNames:
+  - Free Agent Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

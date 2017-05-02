@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cbe23c57b6337d346b7deed24e0925fa
+timeCreated: 1493664177
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Free Agent Condensed Italic
+  fontNames:
+  - Free Agent Condensed Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -72,13 +72,8 @@ public class BodyPhysics : MonoBehaviour
             {
                 // temp[i] += 0;
             }
-            // If on positive side of body, subtract
-            else if (distances[i] > 0)
-            {
-                temp[i] -= fComponents[i];
-            }
-            // If on negative side of body, add
-            else if (distances[i] < 0)
+            // Else, add components
+            else
             {
                 temp[i] += fComponents[i];
             }
@@ -117,8 +112,10 @@ public class BodyPhysics : MonoBehaviour
     public static void UpdateBodyPhysics(GameObject obj)
     {
         Body b = obj.GetComponent<Body>();
-        b.Velocity += b.Acceleration * (float)(Time.fixedDeltaTime);
-        obj.transform.position += b.Velocity * (float)(Time.fixedDeltaTime);
+        b.Velocity += b.Acceleration * (float)(Time.fixedDeltaTime); // TODO make changing units instant, no inertia
+        if (Mathf.Abs(b.Velocity.x) == Mathf.Infinity || Mathf.Abs(b.Velocity.y) == Mathf.Infinity || Mathf.Abs(b.Velocity.z) == Mathf.Infinity)
+            b.Velocity = Vector3.zero;
+        obj.transform.position += b.Velocity * (float)(Time.fixedDeltaTime); // TODO look into Time.fixedDeltaTime
     }
 
     /// <summary>

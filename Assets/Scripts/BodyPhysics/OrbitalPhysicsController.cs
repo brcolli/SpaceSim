@@ -41,7 +41,7 @@ public class OrbitalPhysicsController : MonoBehaviour {
 	        // If go too far out, delete (distance used is the approx. radius
             // of the solar system in AU*1.5.
             // TODO be aware that this breaks many scenes with far apart objects
-	        if (Mathf.Abs(gameObject.transform.position.sqrMagnitude - _center.transform.position.sqrMagnitude) > 45)
+	        if (Mathf.Abs(gameObject.transform.position.sqrMagnitude - _center.transform.position.sqrMagnitude) > 1E9)
 	        {
 	            _objectPool.Remove(gameObject);
 	            GameObject.Destroy(gameObject);

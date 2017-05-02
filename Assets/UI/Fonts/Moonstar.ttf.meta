@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 86b05fc50df7c4b4cacb1df317267ff5
+timeCreated: 1493664176
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Moonstar
+  fontNames:
+  - Moonstar
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

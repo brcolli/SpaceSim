@@ -90,8 +90,9 @@
     <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\Octree.cs" />
     <Compile Include="Assets\Scripts\Collision Detection\BroadPhase\SpatialSubdivision.cs" />
     <Compile Include="Assets\Scripts\Collision Detection\NarrowPhase\SphericalCollisionCheck.cs" />
-    <Compile Include="Assets\Scripts\Misc\DisplayInfo.cs" />
     <Compile Include="Assets\Scripts\Misc\LoadSaveScene.cs" />
+    <Compile Include="Assets\Scripts\UI\DisplayInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\OnHoverHighlight.cs" />
     <Compile Include="Assets\Scripts\UniversalControllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\UniversalControllers\HierarchyManager.cs" />
     <Compile Include="Assets\Scripts\UniversalControllers\OrbitalPlaneController.cs" />
