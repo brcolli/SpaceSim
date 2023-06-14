@@ -3,6 +3,6 @@ Space Simulator written in C# and Unity. Can place any number of celestial objec
 
 ![Empty space with UI](https://github.com/brcolli/SpaceSim/blob/master/SpaceSim/SpaceSim%20Image%201.PNG)
 
-![Interacting with the Sun](https://github.com/brcolli/SpaceSim/SpaceSim/SpaceSim%20Image%202.PNG)
+![Interacting with the Sun](https://github.com/brcolli/SpaceSim/blob/master/SpaceSim/SpaceSim%20Image%202.PNG)
 
-![Multibody screen (Earth and Mars)](https://github.com/brcolli/SpaceSim/SpaceSim/SpaceSim%20Image%203.PNG)
+![Multibody screen (Earth and Mars)](https://github.com/brcolli/SpaceSim/blob/master/SpaceSim/SpaceSim%20Image%203.PNG)
